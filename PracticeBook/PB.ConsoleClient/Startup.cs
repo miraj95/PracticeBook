@@ -8,5 +8,9 @@ namespace PB.ConsoleClient
 {
     class Startup
     {
+        static void Main(string[] args)
+        {
+
+        }
     }
 }
