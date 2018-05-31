@@ -5,9 +5,13 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
+<<<<<<< HEAD
 using PB.DbContext;
+=======
+>>>>>>> 3b2894754d0c7c84a60b94e4c144f6ad6b924785
 using PB.Entities;
 using PracticeBook.Models;
+using PB.DbContext;
 
 namespace PracticeBook
 {

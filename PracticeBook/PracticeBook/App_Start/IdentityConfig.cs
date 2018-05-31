@@ -10,6 +10,8 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
+using PB.DbContext;
+using PB.Entities;
 using PracticeBook.Models;
 using PB.Entities;
 using PB.DbContext;
