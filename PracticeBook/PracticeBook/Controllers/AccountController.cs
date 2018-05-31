@@ -152,11 +152,8 @@ namespace PracticeBook.Controllers
         {
             if (ModelState.IsValid)
             {
-<<<<<<< HEAD
                 var user = new User { UserName = model.Username, Email = model.Email };
-=======
-                var user = new User { UserName = model.Email, Email = model.Email };
->>>>>>> 3b2894754d0c7c84a60b94e4c144f6ad6b924785
+
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
