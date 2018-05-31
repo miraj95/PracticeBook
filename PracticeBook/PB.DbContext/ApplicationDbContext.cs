@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using PB.DbContext.Migrations;
 using PB.Entities;
 
 namespace PB.DbContext
@@ -13,6 +10,7 @@ namespace PB.DbContext
         public ApplicationDbContext()
             : base("PBConnection", throwIfV1Schema: false)
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
         }
 
         public static ApplicationDbContext Create()
