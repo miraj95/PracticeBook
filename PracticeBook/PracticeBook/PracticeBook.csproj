@@ -202,7 +202,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -282,6 +281,16 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PB.DbContext\PB.DbContext.csproj">
+      <Project>{673558E4-9A8B-45E6-B0C5-36E64FB219FA}</Project>
+      <Name>PB.DbContext</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PB.Entities\PB.Entities.csproj">
+      <Project>{07C22F66-73B8-415F-A518-3BAC4E59538F}</Project>
+      <Name>PB.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
