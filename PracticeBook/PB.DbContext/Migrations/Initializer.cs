@@ -22,7 +22,7 @@ namespace PB.DbContext.Migrations
             {
                 var roleStore = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
 
-                if (context.Roles.Any(r => r.Name == role))
+                if (!context.Roles.Any(r => r.Name == role))
                 {
                     roleStore.Create(new IdentityRole(role));
                 }
