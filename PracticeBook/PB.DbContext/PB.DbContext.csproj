@@ -58,6 +58,10 @@
     <Compile Include="Migrations\201805311255251_AddedFinalMigrationData.Designer.cs">
       <DependentUpon>201805311255251_AddedFinalMigrationData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806020954210_AddedRoles.cs" />
+    <Compile Include="Migrations\201806020954210_AddedRoles.Designer.cs">
+      <DependentUpon>201806020954210_AddedRoles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\Initializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -82,6 +86,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201805311255251_AddedFinalMigrationData.resx">
       <DependentUpon>201805311255251_AddedFinalMigrationData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806020954210_AddedRoles.resx">
+      <DependentUpon>201806020954210_AddedRoles.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

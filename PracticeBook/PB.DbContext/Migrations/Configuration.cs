@@ -10,20 +10,22 @@ namespace PB.DbContext.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = false;
+            AutomaticMigrationDataLossAllowed = true;
             ContextKey = "PB.DbContext.ApplicationDbContext";
         }
 
         protected override void Seed(ApplicationDbContext context)
         {
+            if (context.Roles.Any())
+            {
+                Initializer.SeedRoles(context);
+            }
+
             if (!context.Users.Any())
             {
                 Initializer.SeedUser(context);
             }
-            if (!context.Roles.Any())
-            {
-                Initializer.SeedRoles(context);
-            }
+            
 
         }
     }

@@ -17,5 +17,7 @@ namespace PB.DbContext
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<PB.Entities.Practice> Practices { get; set; }
     }
 }

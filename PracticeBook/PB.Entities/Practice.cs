@@ -1,24 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PB.Common;
 
 namespace PB.Entities
 {
-    class Practice
+    public class Practice
     {
-        public Practice(string id, string name, DateTime startDate, int duration)
+        public Practice()
         {
-            this.Id = id;
-            this.Name = name;
-            this.StartDate = startDate;
-            this.Duration = duration;
         }
 
+        public Practice(CustomId id)
+        {
+            this.Id = string.IsNullOrEmpty(Convert.ToString(id)) ? new CustomId().ToString() : id.ToString();
+        }
+
+        public Practice(string name, DateTime startDate, DateTime endDate, CustomId id = null) : this(id)
+        {
+            this.Name = name;
+            this.StartDate = startDate;
+            this.EndDate = endDate;
+        }
+
+        [Key]
         public string Id { get; set; }
+        [Required]
+        [StringLength(255)]
         public string Name { get; set; }
+        [Required]
         public DateTime StartDate { get; set; }
-        public int Duration { get; set; }
+        [Required]
+        public DateTime EndDate { get; set; }
     }
 }

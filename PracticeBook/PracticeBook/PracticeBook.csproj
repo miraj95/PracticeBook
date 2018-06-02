@@ -198,6 +198,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PracticesController.cs" />
+    <Compile Include="DTOs\PracticeEntry.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -265,6 +267,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Practices\Create.cshtml" />
+    <Content Include="Views\Practices\Delete.cshtml" />
+    <Content Include="Views\Practices\Details.cshtml" />
+    <Content Include="Views\Practices\Edit.cshtml" />
+    <Content Include="Views\Practices\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -283,6 +290,10 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PB.Common\PB.Common.csproj">
+      <Project>{76038283-078A-415C-8654-58D1BDD8B160}</Project>
+      <Name>PB.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PB.DbContext\PB.DbContext.csproj">
       <Project>{673558E4-9A8B-45E6-B0C5-36E64FB219FA}</Project>
       <Name>PB.DbContext</Name>
