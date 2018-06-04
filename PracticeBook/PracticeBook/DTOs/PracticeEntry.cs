@@ -20,5 +20,14 @@ namespace PracticeBook.DTOs
         [StringLength(50)]
         public string EndDate { get; set; }
 
+        public DateTime GetStartDate()
+        {
+            return DateTime.Parse($"{this.StartDate}");
+        }
+
+        public DateTime GetEndDate()
+        {
+            return DateTime.Parse($"{this.EndDate}");
+        }
     }
 }

@@ -47,6 +47,7 @@
     <Compile Include="CustomException.cs" />
     <Compile Include="CustomId.cs" />
     <Compile Include="ErrorUtils.cs" />
+    <Compile Include="FutureDate.cs" />
     <Compile Include="HashUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -52,12 +52,12 @@ namespace PracticeBook.Controllers
             if (ModelState.IsValid)
             {
                 var userId = User.Identity.GetUserId();
-                DateTime startDate = DateTime.Parse(string.Format($"{entry.StartDate}"));
-                DateTime endDate = DateTime.Parse(string.Format($"{entry.EndDate}"));
+                // DateTime startDate = DateTime.Parse(string.Format($"{entry.StartDate}"));
+                // DateTime endDate = DateTime.Parse(string.Format($"{entry.EndDate}"));
                 Practice practice = new Practice(
                     entry.Name,
-                    startDate,
-                    endDate);
+                    entry.GetStartDate(),
+                    entry.GetEndDate());
 
                 db.Practices.Add(practice);
                 db.SaveChanges();
