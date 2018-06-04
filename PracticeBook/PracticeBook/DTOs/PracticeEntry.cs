@@ -19,5 +19,6 @@ namespace PracticeBook.DTOs
         [Required]
         [StringLength(50)]
         public string EndDate { get; set; }
+
     }
 }
