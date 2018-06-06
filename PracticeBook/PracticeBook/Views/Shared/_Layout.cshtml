@@ -23,6 +23,13 @@
                 <ul class="nav navbar-nav">
                     @if (Context.User.IsInRole("Administrator"))
                     {
+                        <li>@Html.ActionLink("Add Company to Practice", "Create", "PracticeCompanies")</li>
+                    }
+
+                </ul>
+                <ul class="nav navbar-nav">
+                    @if (Context.User.IsInRole("Administrator"))
+                    {
                         <li>@Html.ActionLink("Add new Practice", "Create", "Practices")</li>
                     }
 

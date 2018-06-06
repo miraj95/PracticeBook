@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using PB.DbContext;
 using PB.Entities;
 using PracticeBook.DTOs;
+using PracticeBook.Models;
 
 namespace PracticeBook.Controllers
 {
@@ -19,6 +20,8 @@ namespace PracticeBook.Controllers
         // GET: PracticeCompanies
         public ActionResult Index()
         {
+
+            Practice practice = new Practice();
             List<Practice> PracticeList = db.Practices.ToList();
             ViewBag.PracticeList = new SelectList(PracticeList, "Id", "Name");
             return View(db.PracticeCompanies.ToList());
@@ -42,6 +45,29 @@ namespace PracticeBook.Controllers
         // GET: PracticeCompanies/Create
         public ActionResult Create()
         {
+            var practices = db.Practices.ToList();
+            List<SelectListItem> practicesList = new List<SelectListItem>();
+            foreach(Practice item in practices)
+            {
+                practicesList.Add(new SelectListItem
+                {
+                    Text = item.Name,
+                    Value = item.Name.ToString()
+                });
+            }
+            ViewBag.Practice = practicesList;
+
+            var companies = db.Companies.ToList();
+            List<SelectListItem> companiesList = new List<SelectListItem>();
+            foreach (Company item in companies)
+            {
+                companiesList.Add(new SelectListItem
+                {
+                    Text = item.Name,
+                    Value = item.Name
+                });
+            }
+            ViewBag.Company = companiesList;
             return View();
         }
 
@@ -55,8 +81,8 @@ namespace PracticeBook.Controllers
             if (ModelState.IsValid)
             {
                 PracticeCompany practiceCompany = new PracticeCompany(
-                    entry.PracticeId,
-                    entry.CompanyId,
+                    entry.Practice,
+                    entry.Company,
                     entry.Capacity);
 
                 db.PracticeCompanies.Add(practiceCompany);

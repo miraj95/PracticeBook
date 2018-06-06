@@ -1,11 +1,9 @@
-﻿@model PB.Entities.PracticeCompany
-@*@Html.DropDownListFor(m => m, new SelectList(Model, "Code", "Name", 0), "Please select a country")*@
-
+﻿@model PracticeBook.DTOs.PracticeCompanyEntry
 @{
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Create @ViewBag.Message</h2>
 
 
 @using (Html.BeginForm())
@@ -23,15 +21,22 @@
                 @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
             </div>
         </div>*@
-
     <div class="form-group">
-        @Html.LabelFor(model => model.Capacity, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Practice, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Capacity, new { htmlAttributes = new { @class = "form-control" } })
-            
-            @Html.ValidationMessageFor(model => model.Capacity, "", new { @class = "text-danger" })
+            @Html.DropDownListFor(model => model.Practice, (IEnumerable<SelectListItem>)ViewBag.Practice, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Practice, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Company, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.Company, (IEnumerable<SelectListItem>)ViewBag.Company, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Company, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
 
     <div class="form-group">
         @Html.LabelFor(model => model.Capacity, htmlAttributes: new { @class = "control-label col-md-2" })

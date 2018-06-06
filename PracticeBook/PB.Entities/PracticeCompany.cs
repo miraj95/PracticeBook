@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace PB.Entities
 {
     public class PracticeCompany
@@ -24,19 +25,20 @@ namespace PB.Entities
         public PracticeCompany(string practice, string company, int capacity, CustomId id = null)
             :this(id)
         {
-            this.PracticeId = practice;
-            this.CompanyId = company;
+            this.Practice = practice;
+            this.Company = company;
             this.Capacity = capacity;
         }
-
         [Key]
         public string Id { get; set; }
         [Required]
-        public string PracticeId { get; set; }
+        public string Practice { get; set; }
         [Required]
-        public string CompanyId { get; set; }
+        public string Company { get; set; }
         [Required]
         public int Capacity { get; set; }
 
+        public List<Practice> PracticeCollection { get; set; }
+        public List<Company> CompanyCollection { get; set; }
     }
 }

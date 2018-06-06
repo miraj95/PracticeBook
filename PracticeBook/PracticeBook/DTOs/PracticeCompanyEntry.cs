@@ -10,10 +10,10 @@ namespace PracticeBook.DTOs
     public class PracticeCompanyEntry
     {
         [Required]
-        public string PracticeId { get; set; }
+        public string Practice { get; set; }
 
         [Required]
-        public string CompanyId { get; set; }
+        public string Company { get; set; }
 
         [Required]
         [Range(1, 20, ErrorMessage = "Value must be between 1 to 15")]
