@@ -19,12 +19,19 @@ namespace PB.Entities
             this.Id = string.IsNullOrEmpty(Convert.ToString(id)) ? new CustomId().ToString() : id.ToString();
         }
 
-        public Company(string name, int capacity, string userId, CustomId id = null)
+        public Company(string name, int capacity, string practiceId, CustomId id = null)
             :this(id)
         {
             this.Name = name;
             this.Capacity = capacity;
-            this.UserId = userId;
+            this.PracticeId = practiceId;
+        }
+
+        public Company(string name, int capacity, CustomId id = null)
+            : this(id)
+        {
+            this.Name = name;
+            this.Capacity = capacity;
         }
 
         [Key]
@@ -33,6 +40,6 @@ namespace PB.Entities
         public string Name { get; set; }
         [Required]
         public int Capacity { get; set; }
-        public string UserId { get; set; }
+        public string PracticeId { get; set; }
     }
 }
