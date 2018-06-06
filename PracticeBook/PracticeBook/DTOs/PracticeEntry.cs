@@ -22,12 +22,12 @@ namespace PracticeBook.DTOs
 
         public DateTime GetStartDate()
         {
-            return DateTime.Parse($"{this.StartDate}");
+            return DateTime.ParseExact(this.StartDate, "dd/mm/yyyy", null);
         }
 
         public DateTime GetEndDate()
         {
-            return DateTime.Parse($"{this.EndDate}");
+            return DateTime.ParseExact(this.EndDate, "dd/mm/yyyy", null);
         }
     }
 }
