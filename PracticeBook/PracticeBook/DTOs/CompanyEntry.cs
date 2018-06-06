@@ -13,7 +13,8 @@ namespace PracticeBook.DTOs
         public string Name { get; set; }
 
         [Required]
-        [Range(1, 20, ErrorMessage = "Value must be between 1 to 15")]
-        public int Capacity { get; set; }
+        [StringLength(255)]
+        //[Range(1, 20, ErrorMessage = "Value must be between 1 to 15")]
+        public string Address { get; set; }
     }
 }

@@ -12,53 +12,54 @@ using PracticeBook.DTOs;
 
 namespace PracticeBook.Controllers
 {
-    public class CompaniesController : Controller
+    public class PracticeCompaniesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Companies
+        // GET: PracticeCompanies
         public ActionResult Index()
         {
-            return View(db.Companies.ToList());
+            List<Practice> PracticeList = db.Practices.ToList();
+            ViewBag.PracticeList = new SelectList(PracticeList, "Id", "Name");
+            return View(db.PracticeCompanies.ToList());
         }
 
-        // GET: Companies/Details/5
+        // GET: PracticeCompanies/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Company company = db.Companies.Find(id);
-            if (company == null)
+            PracticeCompany practiceCompany = db.PracticeCompanies.Find(id);
+            if (practiceCompany == null)
             {
                 return HttpNotFound();
             }
-            return View(company);
+            return View(practiceCompany);
         }
 
-        // GET: Companies/Create
+        // GET: PracticeCompanies/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Companies/Create
+        // POST: PracticeCompanies/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CompanyEntry entry)
+        public ActionResult Create(PracticeCompanyEntry entry)
         {
             if (ModelState.IsValid)
             {
-                // DateTime startDate = DateTime.Parse(string.Format($"{entry.StartDate}"));
-                // DateTime endDate = DateTime.Parse(string.Format($"{entry.EndDate}"));
-                Company company = new Company(
-                    entry.Name,
-                    entry.Address);
+                PracticeCompany practiceCompany = new PracticeCompany(
+                    entry.PracticeId,
+                    entry.CompanyId,
+                    entry.Capacity);
 
-                db.Companies.Add(company);
+                db.PracticeCompanies.Add(practiceCompany);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -66,59 +67,59 @@ namespace PracticeBook.Controllers
             return View(entry);
         }
 
-        // GET: Companies/Edit/5
+        // GET: PracticeCompanies/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Company company = db.Companies.Find(id);
-            if (company == null)
+            PracticeCompany practiceCompany = db.PracticeCompanies.Find(id);
+            if (practiceCompany == null)
             {
                 return HttpNotFound();
             }
-            return View(company);
+            return View(practiceCompany);
         }
 
-        // POST: Companies/Edit/5
+        // POST: PracticeCompanies/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Capacity,UserId")] Company company)
+        public ActionResult Edit([Bind(Include = "Id,Capacity")] PracticeCompany practiceCompany)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(company).State = EntityState.Modified;
+                db.Entry(practiceCompany).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(company);
+            return View(practiceCompany);
         }
 
-        // GET: Companies/Delete/5
+        // GET: PracticeCompanies/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Company company = db.Companies.Find(id);
-            if (company == null)
+            PracticeCompany practiceCompany = db.PracticeCompanies.Find(id);
+            if (practiceCompany == null)
             {
                 return HttpNotFound();
             }
-            return View(company);
+            return View(practiceCompany);
         }
 
-        // POST: Companies/Delete/5
+        // POST: PracticeCompanies/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Company company = db.Companies.Find(id);
-            db.Companies.Remove(company);
+            PracticeCompany practiceCompany = db.PracticeCompanies.Find(id);
+            db.PracticeCompanies.Remove(practiceCompany);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
