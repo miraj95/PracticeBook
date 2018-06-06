@@ -56,8 +56,8 @@ namespace PracticeBook.Controllers
                 // DateTime endDate = DateTime.Parse(string.Format($"{entry.EndDate}"));
                 Practice practice = new Practice(
                     entry.Name,
-                    entry.GetStartDate(),
-                    entry.GetEndDate());
+                    entry.StartDate,
+                    entry.EndDate);
 
                 db.Practices.Add(practice);
                 db.SaveChanges();
