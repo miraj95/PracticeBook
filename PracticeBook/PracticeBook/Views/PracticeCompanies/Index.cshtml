@@ -5,21 +5,21 @@
 }
 
 
-<h2>Index</h2>
+<h2>Практики</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Създай практика", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Practice)
+            @Html.DisplayName("Име на практика")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Company)
+            @Html.DisplayName("Фирма")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Capacity)
+            @Html.DisplayName("Капацитет")
         </th>
     </tr>
     <tr>
@@ -38,9 +38,9 @@
             @Html.DisplayFor(modelItem => item.Capacity)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            @Html.ActionLink("Редактирай", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Подробности", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Изтрий", "Delete", new { id = item.Id })
         </td>
     </tr>
 }

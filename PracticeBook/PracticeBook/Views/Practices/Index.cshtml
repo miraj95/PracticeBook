@@ -4,21 +4,21 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Кампании</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Добави кампания", "Create")
 </p>
-<table class="table">
+<table class="table-hover table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayName("Име")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.StartDate)
+            @Html.DisplayName("Начало")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EndDate)
+            @Html.DisplayName("Край")
         </th>
         <th></th>
     </tr>
@@ -35,9 +35,9 @@
             @Html.DisplayFor(modelItem => item.EndDate)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Редактирай", "Edit", new { id = item.Id }, new { @class= "btn btn-default" }) |
+            @Html.ActionLink("Подробности", "Details", new { id=item.Id }, new { @class = "btn btn-success" }) |
+            @Html.ActionLink("Изтриване", "Delete", new { id=item.Id }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

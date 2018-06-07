@@ -4,14 +4,14 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Подробности</h2>
 
 <div>
-    <h4>PracticeCompany</h4>
+    <h4>Практика</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Practice)
+            @Html.DisplayName("Име на практика")
         </dt>
 
         <dd>
@@ -19,7 +19,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Company)
+            @Html.DisplayName("Име на фирма")
         </dt>
 
         <dd>
@@ -27,7 +27,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Capacity)
+            @Html.DisplayName("Капацитет")
         </dt>
 
         <dd>
@@ -37,6 +37,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Редактирай", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Покажи всички практики", "Index")
 </p>
