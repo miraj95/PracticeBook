@@ -3,10 +3,11 @@
 @{
     ViewBag.Title = "Вход";
 }
-
+<link href="~/Content/myloginstyle.css" rel="stylesheet" />
 <h2>@ViewBag.Title.</h2>
 <div class="row">
-    <div class="col-md-8">
+    <img src="~/Content/avatar.jpg" class="avatar"/>
+    <div class="col-md-8 login-box">
         <section id="loginForm">
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
@@ -38,12 +39,11 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Вход" class="btn btn-default" />
+                        <input type="submit" value="Вход" class="btn btn-info" />
+                        @Html.ActionLink("Регистрирай се", "Register")
                     </div>
                 </div>
-                <p>
-                    @Html.ActionLink("Регистрирай се с нов акаунт", "Register")
-                </p>
+               
                 @* Enable this once you have account confirmation enabled for password reset functionality
                     <p>
                         @Html.ActionLink("Forgot your password?", "ForgotPassword")
