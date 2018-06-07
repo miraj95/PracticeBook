@@ -6,21 +6,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace PB.Entities
 {
     public class PracticeCompany
     {
         public PracticeCompany()
         {
-
         }
 
         public PracticeCompany(CustomId id)
         {
             this.Id = string.IsNullOrEmpty(Convert.ToString(id)) ? new CustomId().ToString() : id.ToString();
         }
-
 
         public PracticeCompany(string practice, string company, int capacity, CustomId id = null)
             :this(id)

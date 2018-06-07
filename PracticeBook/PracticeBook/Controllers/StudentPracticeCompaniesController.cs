@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Microsoft.AspNet.Identity;
 using PB.DbContext;
 using PB.Entities;
@@ -48,8 +49,8 @@ namespace PracticeBook.Controllers
             {
                 practicesCompaniesList.Add(new SelectListItem
                 {
-                    Text = item.Practice,
-                    Value = item.Id.ToString()
+                    Text = string.Join("-",item.Practice, item.Company),
+                    Value = string.Join("-", item.Practice, item.Company)
                 });
             }
             ViewBag.PracticeCompanies = practicesCompaniesList;
@@ -61,14 +62,16 @@ namespace PracticeBook.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(StudentPracticeCompany entry)
+        public ActionResult Create(StudentPracticeCompanyEntry entry)
         {
             if (ModelState.IsValid)
             {
                 var userId = User.Identity.GetUserId();
+                string username = Membership.GetUser(userId).UserName;
                 StudentPracticeCompany studentPracComp = new StudentPracticeCompany(
-                   entry.PracticeCompany,
-                   entry.UserId = userId);
+                   entry.PracticeCompanies
+                   //,entry.UserId = username
+                   );
 
                 db.StudentPracticeCompanies.Add(studentPracComp);
                 db.SaveChanges();

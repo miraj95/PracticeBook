@@ -19,18 +19,18 @@ namespace PB.Entities
             this.Id = string.IsNullOrEmpty(Convert.ToString(id)) ? new CustomId().ToString() : id.ToString();
         }
 
-        public StudentPracticeCompany(string practiceCompany, string userId, CustomId id = null)
+        public StudentPracticeCompany(string practiceCompanies, /*string userId,*/ CustomId id = null)
             : this(id)
         {
-            this.PracticeCompany = practiceCompany;
-            this.UserId = userId;
+            this.PracticeCompanies = practiceCompanies;
+            //this.UserId = userId;
         }
 
         [Key]
         public string Id { get; set; }
         [Required]
-        public string PracticeCompany { get; set; }
-        [Required]
-        public string UserId { get; set; }
+        public string PracticeCompanies { get; set; }
+        //[Required]
+        //public string UserId { get; set; }
     }
 }

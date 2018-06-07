@@ -12,7 +12,7 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayName("Име")
         </dt>
 
         <dd>
@@ -20,7 +20,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.StartDate)
+            @Html.DisplayName("Начало")
         </dt>
 
         <dd>
@@ -28,7 +28,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.EndDate)
+            @Html.DisplayName("Край")
         </dt>
 
         <dd>
@@ -41,8 +41,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Изтрий" class="btn btn-danger" />
             <div>
+                <input type="submit" value="Изтрий" class="btn btn-danger" /> |
                 @Html.ActionLink("Покажи всички кампании", "Index")
             </div>
         </div>

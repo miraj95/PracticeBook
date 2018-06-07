@@ -11,7 +11,6 @@ namespace PracticeBook.DTOs
     {
 
         [Required]
-        [StringLength(255)]
-        public string PracticeCompany { get; set; }
+        public string PracticeCompanies { get; set; }
     }
 }

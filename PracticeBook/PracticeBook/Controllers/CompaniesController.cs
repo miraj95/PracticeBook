@@ -86,7 +86,7 @@ namespace PracticeBook.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Capacity,UserId")] Company company)
+        public ActionResult Edit(Company company)
         {
             if (ModelState.IsValid)
             {
