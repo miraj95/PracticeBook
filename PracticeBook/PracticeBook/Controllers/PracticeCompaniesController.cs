@@ -56,7 +56,7 @@ namespace PracticeBook.Controllers
                 });
             }
             ViewBag.Practice = practicesList;
-
+            
             var companies = db.Companies.ToList();
             List<SelectListItem> companiesList = new List<SelectListItem>();
             foreach (Company item in companies)

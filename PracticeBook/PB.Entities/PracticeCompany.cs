@@ -37,8 +37,5 @@ namespace PB.Entities
         public string Company { get; set; }
         [Required]
         public int Capacity { get; set; }
-
-        public List<Practice> PracticeCollection { get; set; }
-        public List<Company> CompanyCollection { get; set; }
     }
 }
