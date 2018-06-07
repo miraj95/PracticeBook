@@ -10,84 +10,67 @@ using Microsoft.AspNet.Identity;
 using PB.DbContext;
 using PB.Entities;
 using PracticeBook.DTOs;
-using PracticeBook.Models;
 
 namespace PracticeBook.Controllers
-{
-    public class PracticeCompaniesController : Controller
+{   
+    [Authorize]
+    public class StudentPracticeCompaniesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: PracticeCompanies
+        // GET: StudentPracticeCompanies
         public ActionResult Index()
         {
-
-            Practice practice = new Practice();
-            List<Practice> PracticeList = db.Practices.ToList();
-            ViewBag.PracticeList = new SelectList(PracticeList, "Id", "Name");
-            return View(db.PracticeCompanies.ToList());
+            return View(db.StudentPracticeCompanies.ToList());
         }
 
-        // GET: PracticeCompanies/Details/5
+        // GET: StudentPracticeCompanies/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PracticeCompany practiceCompany = db.PracticeCompanies.Find(id);
-            if (practiceCompany == null)
+            StudentPracticeCompany studentPracticeCompany = db.StudentPracticeCompanies.Find(id);
+            if (studentPracticeCompany == null)
             {
                 return HttpNotFound();
             }
-            return View(practiceCompany);
+            return View(studentPracticeCompany);
         }
 
-        // GET: PracticeCompanies/Create
+        // GET: StudentPracticeCompanies/Create
         public ActionResult Create()
         {
-            var practices = db.Practices.ToList();
-            List<SelectListItem> practicesList = new List<SelectListItem>();
-            foreach(Practice item in practices)
+            var practices = db.PracticeCompanies.ToList();
+            List<SelectListItem> practicesCompaniesList = new List<SelectListItem>();
+            foreach (PracticeCompany item in practices)
             {
-                practicesList.Add(new SelectListItem
+                practicesCompaniesList.Add(new SelectListItem
                 {
-                    Text = item.Name,
-                    Value = item.Name.ToString()
+                    Text = item.Practice,
+                    Value = item.Id.ToString()
                 });
             }
-            ViewBag.Practice = practicesList;
-            
-            var companies = db.Companies.ToList();
-            List<SelectListItem> companiesList = new List<SelectListItem>();
-            foreach (Company item in companies)
-            {
-                companiesList.Add(new SelectListItem
-                {
-                    Text = item.Name,
-                    Value = item.Name
-                });
-            }
-            ViewBag.Company = companiesList;
+            ViewBag.PracticeCompanies = practicesCompaniesList;
             return View();
         }
 
-        // POST: PracticeCompanies/Create
+        // POST: StudentPracticeCompanies/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(PracticeCompany entry)
+        public ActionResult Create(StudentPracticeCompany entry)
         {
             if (ModelState.IsValid)
             {
-                
-                PracticeCompany practiceCompany = new PracticeCompany(
-                    entry.Practice,
-                    entry.Company,
-                    entry.Capacity);
+                var userId = User.Identity.GetUserId();
+                StudentPracticeCompany studentPracComp = new StudentPracticeCompany(
+                   entry.PracticeCompany,
+                   entry.UserId = userId);
 
-                db.PracticeCompanies.Add(practiceCompany);
+                db.StudentPracticeCompanies.Add(studentPracComp);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -95,59 +78,59 @@ namespace PracticeBook.Controllers
             return View(entry);
         }
 
-        // GET: PracticeCompanies/Edit/5
+        // GET: StudentPracticeCompanies/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PracticeCompany practiceCompany = db.PracticeCompanies.Find(id);
-            if (practiceCompany == null)
+            StudentPracticeCompany studentPracticeCompany = db.StudentPracticeCompanies.Find(id);
+            if (studentPracticeCompany == null)
             {
                 return HttpNotFound();
             }
-            return View(practiceCompany);
+            return View(studentPracticeCompany);
         }
 
-        // POST: PracticeCompanies/Edit/5
+        // POST: StudentPracticeCompanies/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(PracticeCompany entry)
+        public ActionResult Edit([Bind(Include = "Id,UserName")] StudentPracticeCompany studentPracticeCompany)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(entry).State = EntityState.Modified;
+                db.Entry(studentPracticeCompany).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(entry);
+            return View(studentPracticeCompany);
         }
 
-        // GET: PracticeCompanies/Delete/5
+        // GET: StudentPracticeCompanies/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PracticeCompany practiceCompany = db.PracticeCompanies.Find(id);
-            if (practiceCompany == null)
+            StudentPracticeCompany studentPracticeCompany = db.StudentPracticeCompanies.Find(id);
+            if (studentPracticeCompany == null)
             {
                 return HttpNotFound();
             }
-            return View(practiceCompany);
+            return View(studentPracticeCompany);
         }
 
-        // POST: PracticeCompanies/Delete/5
+        // POST: StudentPracticeCompanies/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            PracticeCompany practiceCompany = db.PracticeCompanies.Find(id);
-            db.PracticeCompanies.Remove(practiceCompany);
+            StudentPracticeCompany studentPracticeCompany = db.StudentPracticeCompanies.Find(id);
+            db.StudentPracticeCompanies.Remove(studentPracticeCompany);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

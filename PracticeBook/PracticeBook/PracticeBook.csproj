@@ -201,9 +201,11 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PracticeCompaniesController.cs" />
     <Compile Include="Controllers\PracticesController.cs" />
+    <Compile Include="Controllers\StudentPracticeCompaniesController.cs" />
     <Compile Include="DTOs\CompanyEntry.cs" />
     <Compile Include="DTOs\PracticeCompanyEntry.cs" />
     <Compile Include="DTOs\PracticeEntry.cs" />
+    <Compile Include="DTOs\StudentPracticeCompanyEntry.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -288,6 +290,11 @@
     <Content Include="Views\PracticeCompanies\Details.cshtml" />
     <Content Include="Views\PracticeCompanies\Edit.cshtml" />
     <Content Include="Views\PracticeCompanies\Index.cshtml" />
+    <Content Include="Views\StudentPracticeCompanies\Create.cshtml" />
+    <Content Include="Views\StudentPracticeCompanies\Delete.cshtml" />
+    <Content Include="Views\StudentPracticeCompanies\Details.cshtml" />
+    <Content Include="Views\StudentPracticeCompanies\Edit.cshtml" />
+    <Content Include="Views\StudentPracticeCompanies\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

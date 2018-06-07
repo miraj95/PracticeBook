@@ -23,5 +23,7 @@ namespace PB.DbContext
         public System.Data.Entity.DbSet<PB.Entities.Company> Companies { get; set; }
 
         public System.Data.Entity.DbSet<PB.Entities.PracticeCompany> PracticeCompanies { get; set; }
+
+        public System.Data.Entity.DbSet<PB.Entities.StudentPracticeCompany> StudentPracticeCompanies { get; set; }
     }
 }

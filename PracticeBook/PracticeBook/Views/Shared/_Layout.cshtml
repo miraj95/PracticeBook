@@ -21,6 +21,12 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    @if (Context.User.Identity.IsAuthenticated && !Context.User.IsInRole("Administrator"))
+                    {
+                        <li>@Html.ActionLink("Join Practice", "Create", "StudentPracticeCompanies")</li>
+                    }
+                </ul>
+                <ul class="nav navbar-nav">
                     @if (Context.User.IsInRole("Administrator"))
                     {
                         <li>@Html.ActionLink("Add Company to Practice", "Create", "PracticeCompanies")</li>
